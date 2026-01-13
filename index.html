@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>For My Baby ❤️</title>
+<title>For My Love ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -9,62 +9,65 @@ body{
   margin:0;
   font-family: Arial;
   background:black;
-  min-height:100vh;
-  text-align:center;
   color:white;
-  overflow-x:hidden;
+  text-align:center;
 }
 
 .card{
-  background: rgba(255,255,255,0.08);
-  border-radius:20px;
-  padding:30px;
-  max-width:800px;
+  max-width:700px;
   margin:60px auto;
-  box-shadow:0 0 20px rgba(255,105,180,0.6);
+  padding:30px;
+  background:rgba(255,255,255,0.08);
+  border-radius:25px;
+  box-shadow:0 0 20px pink;
   display:none;
 }
 
 button{
-  background: linear-gradient(to right,#ff4b8b,#ff75b5);
+  padding:12px 30px;
   border:none;
+  border-radius:30px;
+  background:linear-gradient(to right,#ff4b8b,#ff75b5);
   color:white;
   font-size:18px;
-  padding:12px 30px;
-  border-radius:30px;
-  cursor:pointer;
   margin:15px;
+  cursor:pointer;
 }
 
-video{
+/* Loader */
+.loader{
   width:100%;
-  max-width:700px;
+  height:20px;
+  background:#222;
   border-radius:20px;
-  margin-top:20px;
+  overflow:hidden;
+}
+.loadbar{
+  height:100%;
+  width:0%;
+  background:pink;
+}
+
+/* Panda */
+.panda{
+  font-size:80px;
 }
 
 /* Letter */
-.letter-box{
+.letter{
+  display:none;
   background:white;
   color:black;
+  padding:20px;
   border-radius:15px;
-  padding:25px;
-  display:none;
-  animation:open 1s;
 }
 
-@keyframes open{
-  from{transform:scaleY(0);}
-  to{transform:scaleY(1);}
-}
-
-/* Rose petals */
+/* Petals */
 .petal{
   position:fixed;
-  top:-50px;
-  font-size:26px;
+  top:-40px;
+  font-size:24px;
   animation:fall 6s linear infinite;
-  pointer-events:none;
 }
 
 @keyframes fall{
@@ -75,107 +78,116 @@ video{
 
 <body>
 
-<!-- PAGE 1 -->
+<audio id="bgMusic" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 PANDA LOADING -->
 <div class="card" id="page1" style="display:block;">
-  <h1>Hii meri babyyyy 😘</h1>
-  <p>Ready for something special? 💖</p>
-  <button onclick="nextPage('page1','page2')">Start</button>
+  <div class="panda">🐼</div>
+  <h2>Loading Love...</h2>
+  <div class="loader"><div class="loadbar" id="loadbar"></div></div>
 </div>
 
 <!-- PAGE 2 -->
 <div class="card" id="page2">
-  <h2>Let's recap some beautiful memories ❤️</h2>
-  <button onclick="startVideos()">Next</button>
+  <h2>Are you Bhumika Panjabi? 💖</h2>
+  <button onclick="nextPage('page2','page3')">Yes</button>
+  <button onclick="alert('Wrong answer 😜')">No</button>
 </div>
 
-<!-- PAGE 3 VIDEOS -->
+<!-- PAGE 3 -->
 <div class="card" id="page3">
-  <h2>Our Beautiful Moments 😘</h2>
+  <h2>Let's recap some memories 💕</h2>
+  <button onclick="nextPage('page3','page4')">Next</button>
+</div>
 
-  <video id="video1" muted playsinline>
+<!-- PAGE 4 VIDEOS -->
+<div class="card" id="page4">
+  <h2>Our Memories 🎥</h2>
+
+  <video id="v1" width="100%" muted>
     <source src="video1.mp4" type="video/mp4">
   </video>
 
-  <video id="video2" muted playsinline style="display:none;">
+  <video id="v2" width="100%" muted style="display:none;">
     <source src="video2.mp4" type="video/mp4">
   </video>
 
-  <video id="video3" muted playsinline style="display:none;">
+  <video id="v3" width="100%" muted style="display:none;">
     <source src="video3.mp4" type="video/mp4">
   </video>
 
-  <video id="video4" muted playsinline style="display:none;">
+  <video id="v4" width="100%" muted style="display:none;">
     <source src="video4.mp4" type="video/mp4">
   </video>
 </div>
 
-<!-- PAGE 4 LETTER -->
-<div class="card" id="page4">
-  <h2>Tap to open your love letter 💌</h2>
-  <button onclick="openLetter()">Open My Letter</button>
+<!-- PAGE 5 -->
+<div class="card" id="page5">
+  <h2>Babyyy tell me, when should we go on our next date? 💕</h2>
+  <button onclick="nextPage('page5','page6')">Next</button>
+</div>
 
-  <div class="letter-box" id="letterBox">
-    <h3>My Love ❤️</h3>
+<!-- PAGE 6 LETTER -->
+<div class="card" id="page6">
+  <h2>Tap to open love letter 💌</h2>
+  <button onclick="openLetter()">Open Letter</button>
+
+  <div class="letter" id="letterBox">
     <p>
-      You are the most beautiful part of my life.  
-      Every moment with you feels like a dream come true.  
-      Your smile is my happiness and your love is my strength.  
-      I promise to love you more every single day.  
-      <br><br>
-      Forever yours 😘❤️
+      My love ❤️ <br><br>
+      You are my happiness, my peace and my everything.  
+      I promise to always love you, care for you  
+      and stay with you forever 😘  
     </p>
   </div>
 </div>
 
-<!-- PAGE 5 -->
-<div class="card" id="page5">
-  <h1>Byeee Babyyyy 😘</h1>
-  <p>I love you forever ❤️</p>
-</div>
-
 <script>
+/* Panda loader */
+let load=0;
+let bar=document.getElementById("loadbar");
+let loader=setInterval(()=>{
+  load+=2;
+  bar.style.width=load+"%";
+  if(load>=100){
+    clearInterval(loader);
+    nextPage('page1','page2');
+  }
+},80);
+
+/* Page switch */
 function nextPage(cur,next){
   document.getElementById(cur).style.display="none";
   document.getElementById(next).style.display="block";
 }
 
-function startVideos(){
-  nextPage('page2','page3');
+/* Videos auto play */
+let v1=document.getElementById("v1");
+let v2=document.getElementById("v2");
+let v3=document.getElementById("v3");
+let v4=document.getElementById("v4");
 
-  let v1 = document.getElementById("video1");
-  let v2 = document.getElementById("video2");
-  let v3 = document.getElementById("video3");
+v1.onended=()=>{ v1.style.display="none"; v2.style.display="block"; v2.play(); }
+v2.onended=()=>{ v2.style.display="none"; v3.style.display="block"; v3.play(); }
+v3.onended=()=>{ v3.style.display="none"; v4.style.display="block"; v4.play(); }
+v4.onended=()=>{ nextPage('page4','page5'); }
 
-  v1.play();
+/* Auto start first video */
+setTimeout(()=>{ v1.play(); },1500);
 
-  v1.onended = function(){
-    v1.style.display="none";
-    v2.style.display="block";
-    v2.play();
-  }
-
-  v2.onended = function(){
-    v2.style.display="none";
-    v3.style.display="block";
-    v3.play();
-  }
-
-  v3.onended = function(){
-    nextPage('page3','page4');
-  }
-}
-
+/* Letter + petals */
 function openLetter(){
   document.getElementById("letterBox").style.display="block";
 
-  // Rose petals animation
   setInterval(()=>{
-    const petal=document.createElement("div");
-    petal.className="petal";
-    petal.innerHTML="🌹";
-    petal.style.left=Math.random()*100+"vw";
-    document.body.appendChild(petal);
-    setTimeout(()=>petal.remove(),6000);
+    let p=document.createElement("div");
+    p.className="petal";
+    p.innerHTML="🌹";
+    p.style.left=Math.random()*100+"vw";
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),6000);
   },400);
 }
 </script>
